@@ -30,7 +30,7 @@
 
         <Button Grid.Column="1" Grid.Row="1" Margin="5,0,-104,0" Height="40" VerticalAlignment="Top" Command="{Binding AddDebtorCommand}" FontWeight="Bold" FontFamily="Dubai Medium">Add</Button>
 
-        <DataGrid Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" MinHeight="275" Height="368" Width="500" Margin="50,0,51,0"
+        <DataGrid Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" MinHeight="275" Height="368" Width="500" Margin="51,0,50,0"
                   ItemsSource="{Binding Path=Debtors}"
                   SelectedItem="{Binding Path=CurrentDebtor}"
                   SelectedIndex="{Binding Path=CurrentIndex}"

@@ -7,12 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 using DebtBook.Annotations;
 using Prism.Mvvm;
+using TheDebtBook.Model;
 
 namespace DebtBook.ViewModels
 {
     class AddDebtorViewModel : BindableBase
     {
+
+        public AddDebtorViewModel()
+        {
+            
+        }
+
         #region Properties
+
+        
 
         private string _debtor;
 
