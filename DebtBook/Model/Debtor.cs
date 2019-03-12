@@ -12,6 +12,12 @@ namespace TheDebtBook.Model
         private List<DebtAndDate> debtAndDate = new List<DebtAndDate>();
         private double debt = 0.0;
 
+
+        public void AddDebt(double debt)
+        {
+            DebtAndDate.Add(new Model.DebtAndDate(debt, DateTime.Now));
+        }
+
         public Debtor()
         {
             

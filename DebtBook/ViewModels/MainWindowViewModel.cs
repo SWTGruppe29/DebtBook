@@ -14,6 +14,8 @@ namespace DebtBook.ViewModels
 
 
 
+
+
         #region INotifyPropertyChanged implementation
 
         public event PropertyChangedEventHandler PropertyChanged;
