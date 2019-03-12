@@ -12,6 +12,30 @@ namespace DebtBook.ViewModels
 {
     class AddDebtorViewModel : BindableBase
     {
-        
+        #region Properties
+
+        private string _debtor;
+
+        public string Debtor
+        {
+            get => _debtor;
+            set => SetProperty(ref _debtor, value);
+        }
+
+        private double _value;
+
+        public double Value
+        {
+            get => _value;
+            set => SetProperty(ref _value, value);
+        }
+
+        #endregion
+
+        #region Commands
+
+        #endregion
+
+
     }
 }
