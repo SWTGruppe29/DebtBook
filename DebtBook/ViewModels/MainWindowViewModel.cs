@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Prism.Mvvm;
@@ -14,9 +15,12 @@ namespace DebtBook.ViewModels
 
         public MainWindowViewModel()
         {
-            debtors = new ObservableCollection<Debtor>();
-
-
+           
+            debtors = new ObservableCollection<Debtor>()
+            {
+                new Debtor("Oscar T. Hansen"),
+                new Debtor("T. Moeller")
+            };
 
         }
 
@@ -29,26 +33,25 @@ namespace DebtBook.ViewModels
         }
 
         private Debtor currentDebtor = null;
-        
-        
 
-
-        #endregion
-
-
-
-        #region INotifyPropertyChanged implementation
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+        public Debtor CurrentDebtor
         {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            get { return currentDebtor; }
+            set { SetProperty(ref currentDebtor, value); }
         }
+
+        private int currentIndex = -1;
+
+        public int CurrentIndex
+        {
+            get { return currentIndex; }
+            set { SetProperty(ref currentIndex, value); }
+        }
+
         #endregion
+
+   
+
+
     }
 }

@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:DebtBook"
         xmlns:viewModel="clr-namespace:DebtBook.ViewModels"
         mc:Ignorable="d"
-        Title="Dept book" Height="450" Width="800">
-    <Window.DataContext>
-        <viewModel:MainWindowViewModel />
-    </Window.DataContext>
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="NoResize">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="41"></RowDefinition>
@@ -29,7 +28,8 @@
 
         <DataGrid Grid.Row="1" Grid.Column="0" MinWidth="500" VerticalAlignment="Top" HorizontalAlignment="Center" MinHeight="275" Height="368" Width="500" Margin="50,0,51,0"
                   ItemsSource="{Binding Path=Debtors}"
-                  
+                  SelectedItem="{Binding Path=CurrentDebtor}"
+                  SelectedIndex="{Binding Path=CurrentIndex}"
                   >
 
         </DataGrid>
