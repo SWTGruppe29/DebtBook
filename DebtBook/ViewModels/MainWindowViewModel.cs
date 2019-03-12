@@ -2,6 +2,9 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using DebtBook.Views;
+using Prism.Commands;
 using Prism.Mvvm;
 using TheDebtBook.Model;
 
@@ -50,8 +53,25 @@ namespace DebtBook.ViewModels
 
         #endregion
 
-   
 
+        #region Commands
+
+        private ICommand _addDebtorCommand;
+
+        public ICommand AddDebtorCommand
+        {
+            get { return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
+            {
+                var newDebtor = new Debtor();
+                var vm = new AddDebtorViewModel();
+                var dlg = new DebtorView();
+                dlg.DataContext = vm;
+                dlg.ShowDialog();
+            }
+            )); }
+        }
+
+        #endregion
 
     }
 }

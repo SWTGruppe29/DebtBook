@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:viewModel="clr-namespace:DebtBook.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         ResizeMode="NoResize">
-    
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="41"></RowDefinition>
@@ -26,12 +30,28 @@
 
         <Button Grid.Column="1" Grid.Row="1" Margin="5,0,-104,0" Height="40" VerticalAlignment="Top" Command="{Binding AddDebtorCommand}" FontWeight="Bold" FontFamily="Dubai Medium">Add</Button>
 
-        <DataGrid Grid.Row="1" Grid.Column="0" MinWidth="500" VerticalAlignment="Top" HorizontalAlignment="Center" MinHeight="275" Height="368" Width="500" Margin="50,0,51,0"
+        <DataGrid Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" MinHeight="275" Height="368" Width="500" Margin="51,0,50,0"
                   ItemsSource="{Binding Path=Debtors}"
                   SelectedItem="{Binding Path=CurrentDebtor}"
                   SelectedIndex="{Binding Path=CurrentIndex}"
+                  IsSynchronizedWithCurrentItem="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserResizeRows="False"
+                  CanUserResizeColumns="False"
+                  CanUserReorderColumns="False"
+                  CanUserSortColumns="False"
+                  MinColumnWidth ="250"
+                  IsReadOnly="True"
+                  Name="DataGridDebtors"
+                  AutoGenerateColumns="False"
                   >
-
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header ="Debt" Binding="{Binding Path=Debt}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+            </DataGrid.Columns>
+            
         </DataGrid>
     </Grid>
 </Window>
