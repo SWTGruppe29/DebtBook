@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook.Views"
+        xmlns:viewModels="clr-namespace:DebtBook.ViewModels"
         mc:Ignorable="d"
         Title="View debts" Height="300" Width="300">
     <Window.Resources>
-        <local:DebtorView x:Key="DebtorView"></local:DebtorView>
+        <viewModels:DebtorViewViewModel x:Key="DebtorView"></viewModels:DebtorViewViewModel>
     </Window.Resources>
 
     <Grid>
@@ -20,7 +21,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Path=Debts}" Margin="5" Width="120" Height="200"></ListBox>
+        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Path=Debts}" Margin="5" Width="120" Height="Auto"></ListBox>
         <Button Grid.Column="0" Grid.Row="1" Height="25" Width="45" HorizontalAlignment="Left" Margin="5">Cancel</Button>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
             <TextBox Text="{Binding Path=Value}" Width="60" Margin="5" Height="25"></TextBox>

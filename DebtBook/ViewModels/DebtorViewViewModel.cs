@@ -62,7 +62,6 @@ namespace DebtBook.ViewModels
         {
             DebtAndDate debt = new DebtAndDate(Double.Parse(Value), DateTime.Now);
             current.DebtAndDate.Add(debt);
-
         }
     }
 }

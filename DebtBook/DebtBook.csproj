@@ -90,6 +90,12 @@
     <Compile Include="ViewModels\DebtorViewViewModel.cs" />
     <Compile Include="ViewModels\AddDebtorViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\AddDebtorView.xaml.cs">
+      <DependentUpon>AddDebtorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DebtorView.xaml.cs">
+      <DependentUpon>DebtorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
