@@ -13,8 +13,7 @@ namespace DebtBook.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        AddDebtorView AddDialog = null;
-        DebtorView debtorView = null;
+
         private ObservableCollection<Debtor> _debtors;
 
 
@@ -26,8 +25,6 @@ namespace DebtBook.ViewModels
                 new Debtor("Oscar T. Hansen"),
                 new Debtor("T. Moeller")
             };
-
-            CurrentDebtor = null;
 
         }
 
@@ -66,27 +63,13 @@ namespace DebtBook.ViewModels
         {
             get { return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
             {
-                // Initialize the dialog
-                /*if (AddDialog != null)
-                    AddDialog.Focus();
-                else
-                {
-                    AddDialog = new AddDebtorView();
-                    AddDialog.Owner = App.Current.MainWindow;
-
-
-                    // Listen for the Apply button and show the dialog modelessly
-                    //dlg.Apply += new EventHandler(Dlg_Apply);
-                    //dlg.Closed += new EventHandler(Dlg_Closed);
-                    AddDialog.Show();
-                }*/
-
                 var newDebtor = new Debtor();
                 var vm = new AddDebtorViewModel(newDebtor);
                 var dlg = new AddDebtorView {DataContext = vm};
                 if (dlg.ShowDialog()==true)
                 {
                     Debtors.Add(newDebtor);
+                    
                     CurrentDebtor = newDebtor;
                 }
             }
@@ -99,27 +82,14 @@ namespace DebtBook.ViewModels
         {
             get { return _viewDebtorCommand ?? (_viewDebtorCommand = new DelegateCommand(()=>
             {
-                // Initialize the dialog
-                if (debtorView != null)
-                    debtorView.Focus();
-                else
+                var vm = new DebtorViewViewModel(CurrentDebtor);
+                var dlg = new DebtorView() {DataContext = vm};
+                dlg.Owner = App.Current.MainWindow;
+                
+                if(dlg.ShowDialog()==true)
                 {
-                    debtorView = new DebtorView();
-                    debtorView.Owner = App.Current.MainWindow;
-
-
-                    debtorView.Add += 
-                    // Listen for the Apply button and show the dialog modelessly
-
-                    //dlg.Apply += new EventHandler(Dlg_Apply);
-                    //dlg.Closed += new EventHandler(Dlg_Closed);
-                    debtorView.Show();
+                    
                 }
-
-
-                //var vm = new DebtorViewViewModel(CurrentDebtor);
-                //var dlg = new DebtorView() {DataContext = vm};
-                //dlg.Show();
             }, 
             () =>
             {

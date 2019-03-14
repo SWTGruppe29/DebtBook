@@ -5,7 +5,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using DebtBook.Annotations;
+using Prism.Commands;
 using Prism.Mvvm;
 using TheDebtBook.Model;
 
@@ -29,17 +32,20 @@ namespace DebtBook.ViewModels
             set => SetProperty(ref _debtor, value);
         }
 
-        private double _value;
+        private string _value;
 
-        public double Value
+        public string Value
         {
             get => _value;
             set => SetProperty(ref _value, value);
         }
 
+
+
         #endregion
 
         #region Commands
+
 
         #endregion
 

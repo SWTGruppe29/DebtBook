@@ -23,15 +23,20 @@ namespace DebtBook.ViewModels
 
         public DebtorViewViewModel(Debtor debtor)
         {
+            CurrentDebtor = debtor;
             Debts = debtor.DebtAndDate;
-        }
-
-        public DebtorViewViewModel()
-        {
             
         }
 
+
         private ObservableCollection<DebtAndDate> debts;
+        private Debtor _debtor;
+
+        public Debtor CurrentDebtor
+        {
+            get => _debtor;
+            set => SetProperty(ref _debtor, value);
+        }
 
         public ObservableCollection<DebtAndDate> Debts
         {
@@ -51,11 +56,14 @@ namespace DebtBook.ViewModels
 
         public ICommand AddDebtCommand
         {
-            get { return addDebtCommand ?? (addDebtCommand = new DelegateCommand(addDebt, canAddDebt)); }
+            get { return addDebtCommand ?? (addDebtCommand = new DelegateCommand(addDebt, canAddDebt).ObservesProperty(() => Value)); }
         }
 
+        
         private bool canAddDebt()
         {
+            return true;
+
             bool result;
             Boolean.TryParse(Value,out result);
             return result;
@@ -63,10 +71,25 @@ namespace DebtBook.ViewModels
 
         private void addDebt()
         {
-            DebtAndDate debt = new DebtAndDate(Double.Parse(Value), DateTime.Now);
-            Debts.Add(debt);
+            if(Value != null)
+            {
+                var val = Double.Parse(Value);
+                DebtAndDate debt = new DebtAndDate(val, DateTime.Now);
 
-            if (Add != null) { Add(this, EventArgs.Empty); }
+                CurrentDebtor.Debt += val;
+                Debts.Add(debt);
+
+                if (Add != null) { Add(this, EventArgs.Empty); }
+            }
+            else
+            {
+                MessageBox.Show("You must enter a debt",
+                                          "Confirmation",
+                                          MessageBoxButton.OK,
+                                          MessageBoxImage.Error);
+            }
+     
+        
         }
     }
 }
