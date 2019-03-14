@@ -68,8 +68,19 @@ namespace DebtBook.ViewModels
                 var dlg = new AddDebtorView {DataContext = vm};
                 if (dlg.ShowDialog()==true)
                 {
-                    Debtors.Add(newDebtor);
+                    foreach (var debtor in Debtors)
+                    {
+                        if (debtor.Name==newDebtor.Name)
+                        {
+                            debtor.AddDebt(newDebtor.Debt);
+                            debtor.Debt += newDebtor.Debt;
+                            CurrentDebtor = debtor;
+                            return;
+                        }
+                    }
                     
+                    newDebtor.AddDebt(newDebtor.Debt);
+                    Debtors.Add(newDebtor);
                     CurrentDebtor = newDebtor;
                 }
             }
