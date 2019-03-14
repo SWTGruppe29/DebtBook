@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using TheDebtBook.Model;
 using System.Diagnostics;
+using System.Windows.Documents;
 
 namespace DebtBook.ViewModels
 {
@@ -42,6 +44,14 @@ namespace DebtBook.ViewModels
         {
             get => _currentDebtor;
             set => SetProperty(ref _currentDebtor, value); 
+        }
+
+        private Debtor debtorToAddDebt;
+
+        public Debtor DebtorToAddDebt
+        {
+            get { return debtorToAddDebt; }
+            set { SetProperty(ref debtorToAddDebt, value); }
         }
 
         private int _currentIndex = -1;
@@ -92,14 +102,17 @@ namespace DebtBook.ViewModels
         public ICommand ViewDebtorCommand
         {
             get { return _viewDebtorCommand ?? (_viewDebtorCommand = new DelegateCommand(()=>
-            {
-                var vm = new DebtorViewViewModel(CurrentDebtor);
+                             {
+                Debtor newDebtor = CurrentDebtor.Clone();
+                ObservableCollection<DebtAndDate> tempDebtAndDates = new ObservableCollection<DebtAndDate>(newDebtor.DebtAndDate);
+                var vm = new DebtorViewViewModel(newDebtor,tempDebtAndDates);
                 var dlg = new DebtorView() {DataContext = vm};
                 dlg.Owner = App.Current.MainWindow;
                 
                 if(dlg.ShowDialog()==true)
                 {
-                    
+                    CurrentDebtor.DebtAndDate = tempDebtAndDates;
+                    CurrentDebtor.Debt = newDebtor.Debt;
                 }
             }, 
             () =>
@@ -108,7 +121,7 @@ namespace DebtBook.ViewModels
                     return true;
                 else
                     return false;
-            }).ObservesProperty(() => CurrentDebtor));
+            }).ObservesProperty(() => CurrentIndex));
             }
         }
 

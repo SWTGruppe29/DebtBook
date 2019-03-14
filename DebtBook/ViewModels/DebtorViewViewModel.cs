@@ -21,15 +21,12 @@ namespace DebtBook.ViewModels
         // Fired when the Add debt button is pressed
         public event EventHandler Add;
 
-        public DebtorViewViewModel(Debtor debtor)
+        public DebtorViewViewModel(Debtor debtor, ObservableCollection<DebtAndDate> tempDebtAndDates)
         {
             CurrentDebtor = debtor;
-            Debts = debtor.DebtAndDate;
-            
+            DebtAndDates = tempDebtAndDates;
         }
 
-
-        private ObservableCollection<DebtAndDate> debts;
         private Debtor _debtor;
 
         public Debtor CurrentDebtor
@@ -38,12 +35,13 @@ namespace DebtBook.ViewModels
             set => SetProperty(ref _debtor, value);
         }
 
-        public ObservableCollection<DebtAndDate> Debts
-        {
-            get { return debts; }
-            set { SetProperty(ref debts, value); }
-        }
+        private ObservableCollection<DebtAndDate> _debtAndDates;
 
+        public ObservableCollection<DebtAndDate> DebtAndDates
+        {
+            get { return _debtAndDates; }
+            set { SetProperty(ref _debtAndDates, value); }
+        }
         private string val;
 
         public string Value
@@ -75,9 +73,8 @@ namespace DebtBook.ViewModels
             {
                 var val = Double.Parse(Value);
                 DebtAndDate debt = new DebtAndDate(val, DateTime.Now);
-
                 CurrentDebtor.Debt += val;
-                Debts.Add(debt);
+                DebtAndDates.Add(debt);
 
                 if (Add != null) { Add(this, EventArgs.Empty); }
             }

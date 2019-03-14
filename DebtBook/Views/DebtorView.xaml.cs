@@ -27,9 +27,9 @@ namespace DebtBook.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            DialogResult = true;
         }
     }
 }

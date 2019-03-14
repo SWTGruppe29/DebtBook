@@ -32,19 +32,24 @@ namespace TheDebtBook.Model
         public double Debt
         {
             get { return debt; }
-            set { debt = value; }
+            set { SetProperty(ref debt, value); }
+        }
+
+        public Debtor Clone()
+        {
+            return this.MemberwiseClone() as Debtor;
         }
 
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set { SetProperty(ref name, value); }
         }
 
         public ObservableCollection<DebtAndDate> DebtAndDate
         {
             get { return debtAndDate; }
-            set { debtAndDate = value; }
+            set { SetProperty(ref debtAndDate, value); }
         }
     }
 }
