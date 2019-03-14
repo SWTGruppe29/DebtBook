@@ -64,7 +64,7 @@ namespace DebtBook.ViewModels
             {
                 var newDebtor = new Debtor();
                 var vm = new AddDebtorViewModel();
-                var dlg = new DebtorView();
+                var dlg = new AddDebtorView();
                 dlg.DataContext = vm;
                 dlg.ShowDialog();
             }
