@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook.Views"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
         Title="Add Debtor" Height="135.046" Width="242.289" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
