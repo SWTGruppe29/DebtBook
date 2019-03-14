@@ -11,7 +11,7 @@ using TheDebtBook.Model;
 
 namespace DebtBook.ViewModels
 {
-    class AddDebtorViewModel : BindableBase
+    public class AddDebtorViewModel : BindableBase
     {
 
         public AddDebtorViewModel(Debtor debtor)
