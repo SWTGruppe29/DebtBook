@@ -28,7 +28,15 @@ namespace DebtBook.Views
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as AddDebtorViewModel;
-            DialogResult = true;
+            if (vm.IsValid)
+            {
+                DialogResult = true;
+            }
+
+            else
+            {
+                MessageBox.Show("Invalid Name or debt, please enter valid information", "Missing data");
+            }
 
         }
     }

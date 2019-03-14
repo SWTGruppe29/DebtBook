@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -32,19 +33,27 @@ namespace DebtBook.ViewModels
             set => SetProperty(ref _debtor, value);
         }
 
-        private string _value;
 
-        public string Value
+        public bool IsValid
         {
-            get => _value;
-            set => SetProperty(ref _value, value);
-        }
+            get
+            {
+                if (string.IsNullOrWhiteSpace(CurrentDebtor.Name))
+                    return false;
+                if (string.IsNullOrWhiteSpace(CurrentDebtor.Debt.ToString(CultureInfo.InvariantCulture)))
+                    return false;
+                if (double.IsNaN(CurrentDebtor.Debt))
+                    return false;
 
+                return true;
+            }
+        }
 
 
         #endregion
 
         #region Commands
+
 
 
         #endregion
