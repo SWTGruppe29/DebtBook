@@ -13,13 +13,17 @@ namespace DebtBook.ViewModels
 {
     class AddDebtorViewModel : BindableBase
     {
+
+        public AddDebtorViewModel(Debtor debtor)
+        {
+            CurrentDebtor = debtor;
+        }
+
         #region Properties
 
-        
+        private Debtor _debtor;
 
-        private string _debtor;
-
-        public string Debtor
+        public Debtor CurrentDebtor
         {
             get => _debtor;
             set => SetProperty(ref _debtor, value);
