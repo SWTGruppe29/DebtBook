@@ -6,19 +6,29 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using DebtBook.Annotations;
+using DebtBook.Views;
 using Prism.Commands;
 using Prism.Mvvm;
 using TheDebtBook.Model;
 
 namespace DebtBook.ViewModels
 {
-    class DebtorViewViewModel : BindableBase
+    public class DebtorViewViewModel : BindableBase
     {
+        // Fired when the Add debt button is pressed
+        public event EventHandler Add;
+
         public DebtorViewViewModel(Debtor debtor)
         {
             Debts = debtor.DebtAndDate;
+        }
+
+        public DebtorViewViewModel()
+        {
+            
         }
 
         private ObservableCollection<DebtAndDate> debts;
@@ -36,7 +46,6 @@ namespace DebtBook.ViewModels
             get { return val; }
             set { SetProperty(ref val, value); }
         }
-
 
         private ICommand addDebtCommand;
 
@@ -56,6 +65,8 @@ namespace DebtBook.ViewModels
         {
             DebtAndDate debt = new DebtAndDate(Double.Parse(Value), DateTime.Now);
             Debts.Add(debt);
+
+            if (Add != null) { Add(this, EventArgs.Empty); }
         }
     }
 }
