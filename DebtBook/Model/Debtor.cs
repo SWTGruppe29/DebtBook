@@ -4,10 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Prism.Mvvm;
 
 namespace TheDebtBook.Model
 {
-    public class Debtor
+    public class Debtor : BindableBase
     {
         private string name;
         private ObservableCollection<DebtAndDate> debtAndDate = new ObservableCollection<DebtAndDate>();
