@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DebtBook.ViewModels;
+using TheDebtBook.Model;
 
 namespace DebtBook.Views
 {
@@ -19,6 +21,7 @@ namespace DebtBook.Views
     /// </summary>
     public partial class DebtorView : Window
     {
+
         public DebtorView()
         {
             InitializeComponent();

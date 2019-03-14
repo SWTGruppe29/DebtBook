@@ -14,12 +14,14 @@ namespace DebtBook.ViewModels
     public class MainWindowViewModel : BindableBase
     {
 
-        private ObservableCollection<Debtor> debtors;
+        private ObservableCollection<Debtor> _debtors;
+
+
 
         public MainWindowViewModel()
         {
            
-            debtors = new ObservableCollection<Debtor>()
+            _debtors = new ObservableCollection<Debtor>()
             {
                 new Debtor("Oscar T. Hansen"),
                 new Debtor("T. Moeller")
@@ -31,24 +33,24 @@ namespace DebtBook.ViewModels
 
         public ObservableCollection<Debtor> Debtors
         {
-            get { return debtors; }
-            set { SetProperty(ref debtors, value); }
+            get => _debtors;
+            set => SetProperty(ref _debtors, value);
         }
 
-        private Debtor currentDebtor = null;
+        private Debtor _currentDebtor = null;
 
         public Debtor CurrentDebtor
         {
-            get { return currentDebtor; }
-            set { SetProperty(ref currentDebtor, value); }
+            get => _currentDebtor;
+            set => SetProperty(ref _currentDebtor, value);
         }
 
-        private int currentIndex = -1;
+        private int _currentIndex = -1;
 
         public int CurrentIndex
         {
-            get { return currentIndex; }
-            set { SetProperty(ref currentIndex, value); }
+            get => _currentIndex;
+            set => SetProperty(ref _currentIndex, value);
         }
 
         #endregion
@@ -64,11 +66,23 @@ namespace DebtBook.ViewModels
             {
                 var newDebtor = new Debtor();
                 var vm = new AddDebtorViewModel();
-                var dlg = new AddDebtorView();
-                dlg.DataContext = vm;
-                dlg.ShowDialog();
+                var dlg = new AddDebtorView {DataContext = vm};
+                dlg.Show();
             }
             )); }
+        }
+
+        private ICommand _viewDebtorCommand;
+
+        public ICommand ViewDebtorCommand
+        {
+            get { return _viewDebtorCommand ?? (_viewDebtorCommand = new DelegateCommand(()=>
+            {
+                var vm = new DebtorViewViewModel(CurrentDebtor);
+                var dlg = new DebtorView() {DataContext = vm};
+                dlg.Show();
+            }));
+            }
         }
 
         #endregion

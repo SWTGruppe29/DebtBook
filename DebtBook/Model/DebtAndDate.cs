@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Prism.Mvvm;
 
 namespace TheDebtBook.Model
 {
-    public class DebtAndDate
+    public class DebtAndDate : BindableBase
     {
         private DateTime date;
         private double debt; 

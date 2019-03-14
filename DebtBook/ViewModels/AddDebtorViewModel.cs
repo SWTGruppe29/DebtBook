@@ -13,12 +13,6 @@ namespace DebtBook.ViewModels
 {
     class AddDebtorViewModel : BindableBase
     {
-
-        public AddDebtorViewModel()
-        {
-            
-        }
-
         #region Properties
 
         
