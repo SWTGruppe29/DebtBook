@@ -13,7 +13,7 @@ namespace DebtBook.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-
+        AddDebtorView AddDialog = null;
         private ObservableCollection<Debtor> _debtors;
 
 
@@ -64,10 +64,25 @@ namespace DebtBook.ViewModels
         {
             get { return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
             {
-                var newDebtor = new Debtor();
-                var vm = new AddDebtorViewModel();
-                var dlg = new AddDebtorView {DataContext = vm};
-                dlg.Show();
+                // Initialize the dialog
+                if (AddDialog != null)
+                    AddDialog.Focus();
+                else
+                {
+                    AddDialog = new AddDebtorView();
+                    AddDialog.Owner = App.Current.MainWindow;
+
+
+                    // Listen for the Apply button and show the dialog modelessly
+                    //dlg.Apply += new EventHandler(Dlg_Apply);
+                    //dlg.Closed += new EventHandler(Dlg_Closed);
+                    AddDialog.Show();
+                }
+
+                //var newDebtor = new Debtor();
+                //var vm = new AddDebtorViewModel();
+                //var dlg = new AddDebtorView {DataContext = vm};
+                //dlg.Show();
             }
             )); }
         }
