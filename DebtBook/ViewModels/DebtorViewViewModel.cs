@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,17 +16,17 @@ namespace DebtBook.ViewModels
 {
     class DebtorViewViewModel : BindableBase
     {
-        private Debtor current;
-
-        public Debtor Current
+        public DebtorViewViewModel(Debtor debtor)
         {
-            get { return current; }
-            set { SetProperty(ref current, value); }
+            Debts = debtor.DebtAndDate;
         }
 
-        public List<DebtAndDate> Debts
+        private ObservableCollection<DebtAndDate> debts;
+
+        public ObservableCollection<DebtAndDate> Debts
         {
-            get { return current.DebtAndDate; }
+            get { return debts; }
+            set { SetProperty(ref debts, value); }
         }
 
         private string val;
@@ -46,22 +47,15 @@ namespace DebtBook.ViewModels
 
         private bool canAddDebt()
         {
-            try
-            {
-                double value = Double.Parse(Value);
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
-            return true;
+            bool result;
+            Boolean.TryParse(Value,out result);
+            return result;
         }
 
         private void addDebt()
         {
             DebtAndDate debt = new DebtAndDate(Double.Parse(Value), DateTime.Now);
-            current.DebtAndDate.Add(debt);
+            Debts.Add(debt);
         }
     }
 }

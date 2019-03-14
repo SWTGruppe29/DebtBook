@@ -7,9 +7,6 @@
         xmlns:viewModels="clr-namespace:DebtBook.ViewModels"
         mc:Ignorable="d"
         Title="View debts" Height="300" Width="300">
-    <Window.Resources>
-        <viewModels:DebtorViewViewModel x:Key="DebtorView"></viewModels:DebtorViewViewModel>
-    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>

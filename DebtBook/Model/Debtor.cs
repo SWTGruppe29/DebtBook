@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace TheDebtBook.Model
     public class Debtor
     {
         private string name;
-        private List<DebtAndDate> debtAndDate = new List<DebtAndDate>();
+        private ObservableCollection<DebtAndDate> debtAndDate = new ObservableCollection<DebtAndDate>();
         private double debt = 0.0;
 
 
@@ -39,7 +40,7 @@ namespace TheDebtBook.Model
             set { name = value; }
         }
 
-        public List<DebtAndDate> DebtAndDate
+        public ObservableCollection<DebtAndDate> DebtAndDate
         {
             get { return debtAndDate; }
             set { debtAndDate = value; }

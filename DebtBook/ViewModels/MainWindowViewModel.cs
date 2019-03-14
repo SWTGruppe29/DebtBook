@@ -78,7 +78,7 @@ namespace DebtBook.ViewModels
         {
             get { return _viewDebtorCommand ?? (_viewDebtorCommand = new DelegateCommand(()=>
             {
-                var vm = new DebtorViewViewModel();
+                var vm = new DebtorViewViewModel(CurrentDebtor);
                 var dlg = new DebtorView() {DataContext = vm};
                 dlg.Show();
             }));
