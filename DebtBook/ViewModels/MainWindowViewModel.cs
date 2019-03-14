@@ -67,7 +67,7 @@ namespace DebtBook.ViewModels
             get { return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(() =>
             {
                 // Initialize the dialog
-                if (AddDialog != null)
+                /*if (AddDialog != null)
                     AddDialog.Focus();
                 else
                 {
@@ -79,12 +79,16 @@ namespace DebtBook.ViewModels
                     //dlg.Apply += new EventHandler(Dlg_Apply);
                     //dlg.Closed += new EventHandler(Dlg_Closed);
                     AddDialog.Show();
-                }
+                }*/
 
-                //var newDebtor = new Debtor();
-                //var vm = new AddDebtorViewModel();
-                //var dlg = new AddDebtorView {DataContext = vm};
-                //dlg.Show();
+                var newDebtor = new Debtor();
+                var vm = new AddDebtorViewModel(newDebtor);
+                var dlg = new AddDebtorView {DataContext = vm};
+                if (dlg.ShowDialog()==true)
+                {
+                    Debtors.Add(newDebtor);
+                    CurrentDebtor = newDebtor;
+                }
             }
             )); }
         }

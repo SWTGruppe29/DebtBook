@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DebtBook.ViewModels;
 
 namespace DebtBook.Views
 {
@@ -22,6 +23,13 @@ namespace DebtBook.Views
         public AddDebtorView()
         {
             InitializeComponent();
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as AddDebtorViewModel;
+            DialogResult = true;
+
         }
     }
 }

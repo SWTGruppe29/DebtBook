@@ -9,9 +9,6 @@
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
         Title="Add Debtor" Height="135.046" Width="242.289" ResizeMode="NoResize">
-    <Window.DataContext>
-        <vm:AddDebtorViewModel />
-    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45"/>
@@ -29,10 +26,10 @@
         </StackPanel>
 
         <StackPanel Margin="0,5" Grid.Column="1" Grid.Row="0">
-            <TextBox Margin="5"></TextBox>
-            <TextBox Margin="5"></TextBox>
+            <TextBox Margin="5" Text="{Binding Path=CurrentDebtor.Name}"></TextBox>
+            <TextBox Margin="5" Text="{Binding Path=CurrentDebtor.Debt}"></TextBox>
         </StackPanel>
-        <Button x:Name="AddBtn" Content="_Add" Grid.Column="1" HorizontalAlignment="Left" Margin="5" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="AddBtn" Content="_Add" Grid.Column="1" HorizontalAlignment="Left" Margin="9.4,5.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="AddBtn_Click"/>
         <Button Content="_Cancel" Grid.Column="1" IsCancel="True" HorizontalAlignment="Left" Margin="100,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
