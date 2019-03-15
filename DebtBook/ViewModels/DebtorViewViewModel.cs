@@ -19,7 +19,6 @@ namespace DebtBook.ViewModels
     public class DebtorViewViewModel : BindableBase
     {
         // Fired when the Add debt button is pressed
-        public event EventHandler Add;
 
         public DebtorViewViewModel(Debtor debtor, ObservableCollection<DebtAndDate> tempDebtAndDates)
         {
@@ -77,17 +76,8 @@ namespace DebtBook.ViewModels
                 CurrentDebtor.Debt += val;
                 DebtAndDates.Add(debt);
 
-                if (Add != null) { Add(this, EventArgs.Empty); }
             }
-            else
-            {
-                MessageBox.Show("You must enter a debt",
-                                          "Confirmation",
-                                          MessageBoxButton.OK,
-                                          MessageBoxImage.Error);
-            }
-     
-        
         }
+        
     }
 }
