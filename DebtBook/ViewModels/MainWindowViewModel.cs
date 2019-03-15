@@ -121,7 +121,7 @@ namespace DebtBook.ViewModels
                     return true;
                 else
                     return false;
-            }).ObservesProperty(() => CurrentIndex));
+            }).ObservesProperty(() => CurrentDebtor));
             }
         }
 
