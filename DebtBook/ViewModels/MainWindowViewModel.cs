@@ -46,14 +46,6 @@ namespace DebtBook.ViewModels
             set => SetProperty(ref _currentDebtor, value); 
         }
 
-        private Debtor debtorToAddDebt;
-
-        public Debtor DebtorToAddDebt
-        {
-            get { return debtorToAddDebt; }
-            set { SetProperty(ref debtorToAddDebt, value); }
-        }
-
         private int _currentIndex = -1;
 
         public int CurrentIndex
