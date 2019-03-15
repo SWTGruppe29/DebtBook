@@ -42,12 +42,13 @@ namespace DebtBook.ViewModels
             get { return _debtAndDates; }
             set { SetProperty(ref _debtAndDates, value); }
         }
-        private string val;
+
+        private string _value;
 
         public string Value
         {
-            get { return val; }
-            set { SetProperty(ref val, value); }
+            get { return _value; }
+            set { SetProperty(ref _value, value); }
         }
 
         private ICommand addDebtCommand;
