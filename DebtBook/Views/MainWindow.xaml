@@ -49,9 +49,10 @@
                   AutoGenerateColumns="False"
                   >
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
                 <DataGridTextColumn
                     Header ="Debt"  Binding="{Binding Path=Debt}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                
             </DataGrid.Columns>
 
         </DataGrid>

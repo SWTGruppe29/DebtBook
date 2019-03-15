@@ -29,7 +29,7 @@
             <TextBox Margin="5" Text="{Binding Path=CurrentDebtor.Name}"></TextBox>
             <TextBox Margin="5" Text="{Binding Path=CurrentDebtor.Debt}"></TextBox>
         </StackPanel>
-        <Button x:Name="AddBtn" Content="_Add" Grid.Column="1" HorizontalAlignment="Left" Margin="9.4,5.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="AddBtn_Click"/>
+        <Button x:Name="AddBtn" IsDefault="True" Content="_Add" Grid.Column="1" HorizontalAlignment="Left" Margin="9.4,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="AddBtn_Click"/>
         <Button Content="_Cancel" Grid.Column="1" IsCancel="True" HorizontalAlignment="Left" Margin="100,5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
