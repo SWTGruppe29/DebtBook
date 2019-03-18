@@ -31,5 +31,11 @@ namespace DebtBook.Views
         {
             DialogResult = true;
         }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
     }
 }

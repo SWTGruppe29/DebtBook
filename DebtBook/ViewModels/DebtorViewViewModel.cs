@@ -71,12 +71,22 @@ namespace DebtBook.ViewModels
         {
             if(Value != null)
             {
-                var val = Double.Parse(Value);
-                DebtAndDate debt = new DebtAndDate(val, DateTime.Now);
-                CurrentDebtor.Debt += val;
-                DebtAndDates.Add(debt);
-
+                bool tryParse = false;
+                double result = 0;
+                tryParse= Double.TryParse(Value,out result);
+                if (tryParse)
+                {
+                    DebtAndDate debt = new DebtAndDate(result, DateTime.Now);
+                    CurrentDebtor.Debt += result;
+                    DebtAndDates.Add(debt);
+                    return;
+                }
+                else
+                {
+                   MessageBox.Show("Invalid debt, please enter valid information", "Missing data");
+                }
             }
+            
         }
         
     }
